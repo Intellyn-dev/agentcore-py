@@ -29,9 +29,7 @@ def parse_structured(response: str, model: type[T]) -> T:
         raise ParseError(f"Response is not valid JSON: {exc}") from exc
 
     try:
-        return model(**{field: data[field] for field in model.model_fields})
-    except KeyError as exc:
-        raise ParseError(f"Missing required field in LLM response: {exc}") from exc
+        return model(**data)
     except Exception as exc:
         raise ParseError(f"Failed to parse response into {model.__name__}: {exc}") from exc
 
