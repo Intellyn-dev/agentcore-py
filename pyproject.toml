@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentcore"
+version = "2.0.0"
+description = "Shared AI agent primitives for Intellyn platform"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "httpx>=0.27.0",
+    "langchain>=0.2.0",
+    "langchain-core>=0.2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agentcore*"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23"]
